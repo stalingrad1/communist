@@ -1093,15 +1093,38 @@ int64 static GetBlockValue(int nHeight, int64 nFees)
 
 }
 
-else if (pindexBest->nHeight > 11){
+else if (pindexBest->nHeight < 100000){
 	
 int64 nSubsidy = 10 * COIN;
 
-    // Subsidy is cut in half every 840000 blocks, which will occur approximately every 1 week
-    nSubsidy >>= (nHeight / 10080); // Communistcoin: 840k blocks in ~1 week
+    return nSubsidy + nFees;
+}
+
+
+else if (pindexBest->nHeight < 120000){
+	
+int64 nSubsidy = 8 * COIN;
 
     return nSubsidy + nFees;
 }
+
+
+else if (pindexBest->nHeight < 140000){
+	
+int64 nSubsidy = 7 * COIN;
+
+    return nSubsidy + nFees;
+}
+
+
+else if (pindexBest->nHeight < 160000){
+	
+int64 nSubsidy = 6 * COIN;
+
+    return nSubsidy + nFees;
+}
+
+
 }
 
 static const int64 nTargetTimespan = 24 * 60 * 60; // Communistcoin: 1 day
