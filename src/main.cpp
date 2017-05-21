@@ -1124,6 +1124,12 @@ int64 nSubsidy = 6 * COIN;
     return nSubsidy + nFees;
 }
 
+else if (pindexBest->nHeight > 160001){
+	
+int64 nSubsidy = 5 * COIN;
+
+    return nSubsidy + nFees;
+}
 
 }
 
