@@ -1087,12 +1087,21 @@ uint256 static GetOrphanRoot(const CBlockHeader* pblock)
 
 int64 static GetBlockValue(int nHeight, int64 nFees)
 {
-    int64 nSubsidy = 5000 * COIN;
+     if (pindexBest->nHeight < 10){
+        int64 nSubsidy = 50000 * COIN; // Bounties
+        return nSubsidy + nFees;
+
+}
+
+else if (pindexBest->nHeight > 11){
+	
+int64 nSubsidy = 10 * COIN;
 
     // Subsidy is cut in half every 840000 blocks, which will occur approximately every 1 week
     nSubsidy >>= (nHeight / 10080); // Communistcoin: 840k blocks in ~1 week
 
     return nSubsidy + nFees;
+}
 }
 
 static const int64 nTargetTimespan = 24 * 60 * 60; // Communistcoin: 1 day
